@@ -9,7 +9,14 @@ export default function CursorGlow() {
   useEffect(() => {
     // Deteksi jika perangkat menggunakan pointer kasar (layar sentuh / touch screen)
     const touchMediaQuery = window.matchMedia("(pointer: coarse)");
-    setIsTouchDevice(touchMediaQuery.matches);
+    
+    if (touchMediaQuery.matches) {
+      requestAnimationFrame(() => {
+        setIsTouchDevice(true);
+      });
+      console.log("CursorGlow disabled on touch device.");
+      return;
+    }
 
     const handleMediaQueryChange = (e: MediaQueryListEvent) => {
       setIsTouchDevice(e.matches);

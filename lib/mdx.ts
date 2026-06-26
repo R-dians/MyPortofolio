@@ -50,7 +50,7 @@ function parseMDX(fileContent: string) {
       try {
         const validJson = value.replace(/'/g, '"');
         data[key] = JSON.parse(validJson);
-      } catch (e) {
+      } catch {
         data[key] = value
           .slice(1, -1)
           .split(",")

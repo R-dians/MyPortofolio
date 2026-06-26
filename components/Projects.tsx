@@ -31,7 +31,9 @@ export default function Projects({ dict, projects }: ProjectsProps) {
 
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect(emblaApi);
+    requestAnimationFrame(() => {
+      onSelect(emblaApi);
+    });
     emblaApi.on("reInit", onSelect);
     emblaApi.on("select", onSelect);
   }, [emblaApi, onSelect]);

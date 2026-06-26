@@ -49,7 +49,7 @@ export default function Contact({ dict }: ContactProps) {
       } else {
         setStatus("error");
       }
-    } catch (error) {
+    } catch {
       setStatus("error");
     }
   };

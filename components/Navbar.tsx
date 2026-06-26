@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Home, User, Briefcase, Folder, Mail, Globe, Sun, Moon } from "lucide-react"; // Tambahkan Mail, Sun, Moon
+import { Home, User, Briefcase, Folder, Mail, Globe, Sun, Moon, Terminal } from "lucide-react"; // Tambahkan Mail, Sun, Moon, Terminal
 import { Locale } from "@/lib/dictionary";
 
 interface NavbarProps {
@@ -19,12 +19,15 @@ export default function Navbar({ locale }: NavbarProps) {
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = savedTheme === "dark" || (!savedTheme && systemPrefersDark);
     
-    if (savedTheme === "dark" || (!savedTheme && systemPrefersDark)) {
-      setTheme("dark");
+    requestAnimationFrame(() => {
+      setTheme(isDark ? "dark" : "light");
+    });
+
+    if (isDark) {
       document.documentElement.classList.add("dark");
     } else {
-      setTheme("light");
       document.documentElement.classList.remove("dark");
     }
   }, []);
@@ -105,9 +108,11 @@ export default function Navbar({ locale }: NavbarProps) {
         <a 
           href="#home" 
           onClick={() => handleNavLinkClick("home")}
-          className="font-black text-sm md:text-xl tracking-tighter px-1 md:px-2 text-brand-text hover:scale-105 transition-transform"
+          className="font-black text-sm md:text-lg tracking-tighter px-1.5 md:px-2 text-brand-text hover:scale-105 transition-transform flex items-center gap-1"
         >
-          YAN<span className="text-brand-pink">.</span>
+          <Terminal className="w-4 h-4 text-brand-pink" />
+          <span>ARDIAN</span>
+          <span className="text-brand-pink -ml-1">.</span>
         </a>
 
         <div className="h-5 md:h-6 w-px bg-brand-text/10 dark:bg-brand-border mx-0.5 md:mx-1" />

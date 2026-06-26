@@ -33,7 +33,7 @@ export default function Hero({ dict }: HeroProps) {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex-1 space-y-6 text-left"
+          className="w-full md:flex-1 space-y-6 text-left"
         >
           <p className="text-sm font-bold uppercase tracking-widest text-brand-text/60">
             {dict.greeting}
@@ -78,7 +78,7 @@ export default function Hero({ dict }: HeroProps) {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex-1 flex justify-center md:justify-end"
+          className="w-full md:flex-1 flex justify-center md:justify-end"
         >
           <div
             className="relative w-full max-w-sm perspective-1000"
@@ -126,10 +126,10 @@ export default function Hero({ dict }: HeroProps) {
                     alt="Foto Profil ardiansbkti" 
                     width={40}
                     height={40}
-                    className="rounded-full border border-white/20 object-cover"
+                    className="w-10 h-10 rounded-full border border-white/20 object-cover shrink-0"
                   />
                   <div>
-                    <p className="text-base font-black text-white/90">IG:@ardiansbkti</p> 
+                    <p className="text-base font-black text-white/90">@ardiansbkti</p> 
                     <div className="flex items-center gap-1.5">
                       {/* Titik neon cyan menyala */}
                       <div className="w-2.5 h-2.5 bg-cyan-400 rounded-full shadow-[0_0_10px_2px_rgba(34,211,238,0.8)]" />
