@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "@/app/globals.css";
 import Navbar from "@/components/Navbar";
 import Preloader from "@/components/Preloader";
 import { Locale } from "@/lib/dictionary";
 import { Boxes } from "@/components/ui/background-boxes";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["400", "500", "700", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -54,7 +54,7 @@ export default async function RootLayout({
   const { locale } = await params;
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -73,19 +73,19 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${plusJakartaSans.className} relative bg-brand-bg text-brand-text antialiased selection:bg-brand-pink selection:text-white min-h-screen overflow-x-hidden`}
+        className={`${outfit.className} relative bg-brand-bg text-brand-text antialiased selection:bg-brand-pink selection:text-white min-h-screen overflow-x-hidden`}
       >
         <Preloader />
 
         {/* Global interactive background boxes */}
-        <div className="fixed inset-0 w-full h-full z-0 opacity-20 dark:opacity-30 overflow-hidden pointer-events-auto">
+        <div className="fixed inset-0 w-full h-full z-0 opacity-20 dark:opacity-30 overflow-hidden pointer-events-auto no-transition">
           <Boxes />
         </div>
 
         {/* Fading overlay to blend the boxes into the page background */}
-        <div className="fixed inset-0 w-full h-full bg-brand-bg/60 z-0 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+        <div className="fixed inset-0 w-full h-full bg-brand-bg/60 z-0 mask-[radial-gradient(transparent,white)] pointer-events-none" />
 
-        <div className="relative z-10 w-full pointer-events-none [&_header]:pointer-events-auto [&_section]:pointer-events-auto [&_a]:pointer-events-auto [&_button]:pointer-events-auto [&_input]:pointer-events-auto [&_textarea]:pointer-events-auto [&_select]:pointer-events-auto [&_[role=dialog]]:pointer-events-auto">
+        <div className="relative z-10 w-full pointer-events-none [&_header]:pointer-events-auto [&_section]:pointer-events-auto [&_a]:pointer-events-auto [&_button]:pointer-events-auto [&_input]:pointer-events-auto [&_textarea]:pointer-events-auto [&_select]:pointer-events-auto **:[[role=dialog]]:pointer-events-auto">
           {/* 2. PERUBAHAN DISINI: Tambahkan 'as Locale' agar komponen Navbar tetap aman */}
           <Navbar locale={locale as Locale} />
 

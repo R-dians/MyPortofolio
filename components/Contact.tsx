@@ -113,7 +113,7 @@ export default function Contact({ dict }: ContactProps) {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex-1"
           >
-            <div className="bg-white dark:bg-brand-card-bg border border-brand-text/10 dark:border-brand-border rounded-[32px] p-8 md:p-10 shadow-lg relative overflow-hidden">
+            <div className="bg-white dark:bg-brand-card-bg border border-brand-text/10 dark:border-brand-border rounded-4xl p-8 md:p-10 shadow-lg relative overflow-hidden">
               
               {/* Overlay Pesan Sukses */}
               {status === "success" && (
@@ -139,7 +139,7 @@ export default function Contact({ dict }: ContactProps) {
                     name="name" 
                     placeholder={dict.namePlaceholder}
                     disabled={status === "loading"}
-                    className="w-full px-5 py-4 bg-brand-text/[0.03] border border-brand-text/10 dark:border-brand-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-purple/20 focus:border-brand-purple transition-all font-medium text-brand-text placeholder:text-brand-text/30 disabled:opacity-50"
+                    className="w-full px-5 py-4 bg-brand-text/3 border border-brand-text/10 dark:border-brand-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-purple/20 focus:border-brand-purple transition-all font-medium text-brand-text placeholder:text-brand-text/30 disabled:opacity-50"
                     required
                   />
                 </div>
@@ -154,7 +154,7 @@ export default function Contact({ dict }: ContactProps) {
                     name="email" 
                     placeholder={dict.emailPlaceholder}
                     disabled={status === "loading"}
-                    className="w-full px-5 py-4 bg-brand-text/[0.03] border border-brand-text/10 dark:border-brand-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-purple/20 focus:border-brand-purple transition-all font-medium text-brand-text placeholder:text-brand-text/30 disabled:opacity-50"
+                    className="w-full px-5 py-4 bg-brand-text/3 border border-brand-text/10 dark:border-brand-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-purple/20 focus:border-brand-purple transition-all font-medium text-brand-text placeholder:text-brand-text/30 disabled:opacity-50"
                     required
                   />
                 </div>
@@ -169,7 +169,7 @@ export default function Contact({ dict }: ContactProps) {
                     rows={4}
                     placeholder={dict.messagePlaceholder}
                     disabled={status === "loading"}
-                    className="w-full px-5 py-4 bg-brand-text/[0.03] border border-brand-text/10 dark:border-brand-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-purple/20 focus:border-brand-purple transition-all font-medium text-brand-text placeholder:text-brand-text/30 resize-none disabled:opacity-50"
+                    className="w-full px-5 py-4 bg-brand-text/3 border border-brand-text/10 dark:border-brand-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-purple/20 focus:border-brand-purple transition-all font-medium text-brand-text placeholder:text-brand-text/30 resize-none disabled:opacity-50"
                     required
                   ></textarea>
                 </div>

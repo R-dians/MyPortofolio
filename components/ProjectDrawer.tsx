@@ -64,7 +64,7 @@ export default function ProjectDrawer({ isOpen, onClose, project, dict }: Projec
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-brand-text/60 z-[60] cursor-pointer"
+            className="fixed inset-0 bg-brand-text/60 z-60 cursor-pointer"
           />
 
           {/* Panel Laci (Meluncur dari kanan) */}
@@ -73,7 +73,7 @@ export default function ProjectDrawer({ isOpen, onClose, project, dict }: Projec
             animate={{ x: 0, boxShadow: "-20px 0 50px rgba(0,0,0,0.1)" }}
             exit={{ x: "100%", boxShadow: "-20px 0 50px rgba(0,0,0,0)" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 h-[100dvh] w-full md:w-[600px] bg-white dark:bg-brand-card-bg z-[70] overflow-y-auto flex flex-col border-l border-brand-text/10 dark:border-brand-border"
+            className="fixed top-0 right-0 h-dvh w-full md:w-150 bg-white dark:bg-brand-card-bg z-70 overflow-y-auto flex flex-col border-l border-brand-text/10 dark:border-brand-border"
           >
             {/* Header Laci */}
             <div className="relative aspect-video w-full bg-brand-text/5 dark:bg-white/5">

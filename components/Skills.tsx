@@ -42,8 +42,8 @@ export default function Skills({ dict }: SkillsProps) {
       <div className="flex flex-col gap-6 md:gap-8 relative">
         
         {/* Gradient Blur di Kiri dan Kanan */}
-        <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-brand-bg to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-brand-bg to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-linear-to-r from-brand-bg to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-linear-to-l from-brand-bg to-transparent z-10 pointer-events-none" />
 
         {/* Baris 1: Jalan ke Kiri */}
         <div className="flex w-max animate-scroll pause-on-hover py-4">
@@ -101,7 +101,7 @@ export default function Skills({ dict }: SkillsProps) {
 // Komponen Card dengan Hover Interaktif Baru
 function SkillCard({ skill }: { skill: { name: string; img: string } }) {
   return (
-    <div className="group flex items-center gap-3 md:gap-4 px-6 md:px-8 py-4 md:py-5 bg-white/60 dark:bg-brand-card-bg/60 backdrop-blur-md border border-brand-text/10 dark:border-brand-border rounded-[24px] shadow-sm hover:shadow-xl hover:scale-110 hover:-translate-y-2 hover:border-brand-purple/30 hover:bg-white dark:hover:bg-brand-card-bg transition-all duration-300 cursor-pointer">
+    <div className="group flex items-center gap-3 md:gap-4 px-6 md:px-8 py-4 md:py-5 bg-white/60 dark:bg-brand-card-bg/60 backdrop-blur-md border border-brand-text/10 dark:border-brand-border rounded-3xl shadow-sm hover:shadow-xl hover:scale-110 hover:-translate-y-2 hover:border-brand-purple/30 hover:bg-white dark:hover:bg-brand-card-bg transition-all duration-300 cursor-pointer">
       
       {/* PERBAIKAN 2: Grayscale dihapus, warna asli selalu tampil */}
       <img 

@@ -68,7 +68,7 @@ export default function Preloader() {
             y: "-100%", // Slide up ke atas layar seperti tirai
             transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 }
           }}
-          className="fixed inset-0 bg-[#F3F0FF] dark:bg-brand-bg z-[9999] flex items-center justify-center"
+          className="fixed inset-0 bg-[#F3F0FF] dark:bg-brand-bg z-9999 flex items-center justify-center"
         >
           {/* Wrapper dengan overflow-hidden agar efek teks meluncur terlihat rapi */}
           <div className="overflow-hidden h-24 flex items-center justify-center">

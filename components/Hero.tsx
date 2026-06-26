@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { Briefcase, Mail } from "lucide-react";
+import { Briefcase, Download } from "lucide-react";
 import Image from "next/image";
 
 interface HeroProps {
@@ -67,8 +67,12 @@ export default function Hero({ dict }: HeroProps) {
             <a href="#projects" className="inline-flex items-center gap-2 px-8 py-3 bg-brand-purple hover:bg-brand-purple/90 text-white font-black rounded-full shadow-md transition-colors text-base">
               <Briefcase className="w-5 h-5" /> {dict.ctaProjects}
             </a>
-            <a href="#contact" className="inline-flex items-center gap-2 px-8 py-3 border-2 border-brand-text/10 hover:border-brand-text/20 text-brand-text/80 font-black rounded-full transition-colors text-base">
-              <Mail className="w-5 h-5" /> {dict.ctaContact}
+            <a 
+              href="#"
+              onClick={(e) => e.preventDefault()}
+              className="inline-flex items-center gap-2 px-8 py-3 border-2 border-brand-text/10 hover:border-brand-text/20 text-brand-text/80 font-black rounded-full transition-colors text-base cursor-pointer"
+            >
+              <Download className="w-5 h-5" /> {dict.ctaContact}
             </a>
           </div>
         </motion.div>
@@ -93,11 +97,11 @@ export default function Hero({ dict }: HeroProps) {
             }}
           >
             {/* EFEK NEON HALUS: Border glow warna cyan/ungu tipis di belakang kartu */}
-            <div className="absolute -inset-1 bg-gradient-to-tr from-brand-blue to-brand-purple rounded-[34px] blur-md opacity-40 -z-10 group-hover:opacity-60 transition-opacity" />
+            <div className="absolute -inset-1 bg-linear-to-tr from-brand-blue to-brand-purple rounded-3xl blur-md opacity-40 -z-10 group-hover:opacity-60 transition-opacity" />
 
             <motion.div 
               // Hapus bg-[#0f172a] agar kontainer tidak menggelapkan gambar dari belakang
-              className="relative aspect-[3/4] w-full max-w-sm rounded-[32px] overflow-hidden shadow-2xl border border-white/20"
+              className="relative aspect-3/4 w-full max-w-sm rounded-4xl overflow-hidden shadow-2xl border border-white/20"
               style={{ rotateX, rotateY }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
@@ -111,7 +115,7 @@ export default function Hero({ dict }: HeroProps) {
               />
 
               {/* PERBAIKAN 2: Ubah gradient overlay menjadi transparan natural (hanya gelap di bawah agar teks putih tetap terbaca) */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
 
               <div className="absolute top-10 left-10 text-slate-900">
                 <h3 className="text-3xl font-black tracking-tight">Ardian <span className="text-brand-amber">Subakti</span></h3>

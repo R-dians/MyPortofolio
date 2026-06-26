@@ -52,7 +52,7 @@ export default function Certificates({ dict }: CertificatesProps) {
                 - hover:!opacity-100 : Mengembalikan opacity 100% HANYA pada foto yang sedang disorot
                 - transform-gpu : Memastikan animasi scale ringan dan tidak lag
               */}
-              <div className="relative aspect-[4/3] rounded-[12px] overflow-hidden bg-brand-text/5 dark:bg-white/5 border border-brand-text/10 dark:border-brand-border cursor-pointer transition-all duration-500 ease-out hover:scale-105 hover:z-10 hover:shadow-2xl hover:shadow-brand-mint/20 group-hover:opacity-50 hover:!opacity-100 transform-gpu">
+              <div className="relative aspect-4/3 rounded-xl overflow-hidden bg-brand-text/5 dark:bg-white/5 border border-brand-text/10 dark:border-brand-border cursor-pointer transition-all duration-500 ease-out hover:scale-105 hover:z-10 hover:shadow-2xl hover:shadow-brand-mint/20 group-hover:opacity-50 hover:opacity-100! transform-gpu">
                 
                 <Image 
                   src={cert.img} 

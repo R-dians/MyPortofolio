@@ -12,9 +12,9 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
       if (width < 640) {
         setGridSize({ rows: 35, cols: 25, isMobile: true });
       } else if (width < 1024) {
-        setGridSize({ rows: 60, cols: 40, isMobile: false });
+        setGridSize({ rows: 50, cols: 35, isMobile: false });
       } else {
-        setGridSize({ rows: 90, cols: 60, isMobile: false });
+        setGridSize({ rows: 80, cols: 50, isMobile: false });
       }
     };
     updateSize();
@@ -54,9 +54,9 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
       {...rest}
     >
       {rows.map((_, i) => (
-        <motion.div
+        <div
           key={`row` + i}
-          className="w-16 h-8 border-l border-slate-200/60 dark:border-slate-800/50 relative will-change-transform"
+          className="w-24 h-12 border-l border-slate-200/60 dark:border-slate-800/50 relative will-change-transform"
         >
           {cols.map((_, j) => (
             <motion.div
@@ -68,7 +68,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
                 transition: { duration: 2 },
               }}
               key={`col` + j}
-              className="w-16 h-8 border-r border-t border-slate-200/60 dark:border-slate-800/50 relative will-change-[background-color]"
+              className="w-24 h-12 border-r border-t border-slate-200/60 dark:border-slate-800/50 relative will-change-[background-color]"
             >
               {!gridSize.isMobile && j % 2 === 0 && i % 2 === 0 ? (
                 <svg
@@ -77,7 +77,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="absolute h-6 w-10 -top-[14px] -left-[22px] text-slate-300/60 dark:text-slate-700/50 stroke-[1px] pointer-events-none"
+                  className="absolute h-6 w-10 -top-3.5 -left-5.5 text-slate-300/60 dark:text-slate-700/50 stroke-[1px] pointer-events-none"
                 >
                   <path
                     strokeLinecap="round"
@@ -88,7 +88,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
               ) : null}
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       ))}
     </div>
   );
