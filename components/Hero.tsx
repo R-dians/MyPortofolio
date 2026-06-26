@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { Briefcase, Mail } from "lucide-react";
+import Image from "next/image";
 
 interface HeroProps {
   dict: {
@@ -101,10 +102,12 @@ export default function Hero({ dict }: HeroProps) {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               {/* PERBAIKAN 1: Hapus 'opacity-80' dan 'mix-blend-overlay' agar foto tampil 100% natural */}
-              <img 
-                src="images/hero.webp" 
+              <Image 
+                src="/images/hero.webp" 
                 alt="Ardian Subakti" 
-                className="w-full h-full object-cover" 
+                fill
+                priority
+                className="object-cover" 
               />
 
               {/* PERBAIKAN 2: Ubah gradient overlay menjadi transparan natural (hanya gelap di bawah agar teks putih tetap terbaca) */}
@@ -118,13 +121,15 @@ export default function Hero({ dict }: HeroProps) {
               {/* Bento Detail Bawah: Glassmorphism elegan, transparan tanpa warna ngejreng */}
               <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white p-4 bg-white/10 rounded-full shadow-lg backdrop-blur-md border border-white/10">
                 <div className="flex items-center gap-3">
-                  <img 
+                  <Image 
                     src="/images/hero2.webp" 
                     alt="Foto Profil ardiansbkti" 
-                    className="w-10 h-10 rounded-full border border-white/20 object-cover"
+                    width={40}
+                    height={40}
+                    className="rounded-full border border-white/20 object-cover"
                   />
                   <div>
-                    <p className="text-base font-black text-white/90">@ardiansbkti</p> 
+                    <p className="text-base font-black text-white/90">IG:@ardiansbkti</p> 
                     <div className="flex items-center gap-1.5">
                       {/* Titik neon cyan menyala */}
                       <div className="w-2.5 h-2.5 bg-cyan-400 rounded-full shadow-[0_0_10px_2px_rgba(34,211,238,0.8)]" />

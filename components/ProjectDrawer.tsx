@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink, Code2 } from "lucide-react";
+import Image from "next/image";
 
 // Pindahkan fungsi getTechIcon ke luar komponen agar kinerjanya lebih cepat
 const getTechIcon = (tag: string) => {
@@ -45,7 +46,10 @@ export default function ProjectDrawer({ isOpen, onClose, project, dict }: Projec
   
   const title = data.title || "Proyek Tanpa Judul";
   const description = data.description || "Deskripsi proyek belum ditambahkan.";
-  const image = data.image || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800";
+  let imageSrc = data.image || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800";
+  if (imageSrc && !imageSrc.startsWith("http") && !imageSrc.startsWith("/")) {
+    imageSrc = "/" + imageSrc;
+  }
   const tags = data.tags || [];
   const link = data.link;
   const github = data.github;
@@ -81,10 +85,12 @@ export default function ProjectDrawer({ isOpen, onClose, project, dict }: Projec
                 <X className="w-5 h-5" />
               </button>
 
-              <img
-                src={image}
+              <Image
+                src={imageSrc}
                 alt={title}
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, 600px"
+                className="object-cover"
               />
             </div>
 

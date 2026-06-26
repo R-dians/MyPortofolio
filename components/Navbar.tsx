@@ -98,19 +98,19 @@ export default function Navbar({ locale }: NavbarProps) {
   ];
 
   return (
-    <header className="fixed bottom-4 md:top-4 md:bottom-auto inset-x-0 z-50 flex justify-center px-4 transition-all duration-300">
-      <nav className="flex items-center gap-1 md:gap-2 bg-white/80 dark:bg-brand-card-bg/80 backdrop-blur-md border border-brand-text/10 dark:border-brand-border px-2 md:px-4 py-2 rounded-full shadow-lg">
+    <header className="fixed bottom-4 md:top-4 md:bottom-auto inset-x-0 z-50 flex justify-center px-2 md:px-4 transition-all duration-300">
+      <nav className="flex items-center gap-0.5 md:gap-2 bg-white/80 dark:bg-brand-card-bg/80 backdrop-blur-md border border-brand-text/10 dark:border-brand-border px-1 md:px-4 py-1.5 md:py-2 rounded-full shadow-lg">
         
         {/* Logo */}
         <a 
           href="#home" 
           onClick={() => handleNavLinkClick("home")}
-          className="font-black text-lg md:text-xl tracking-tighter px-2 text-brand-text hover:scale-105 transition-transform"
+          className="font-black text-sm md:text-xl tracking-tighter px-1 md:px-2 text-brand-text hover:scale-105 transition-transform"
         >
           YAN<span className="text-brand-pink">.</span>
         </a>
 
-        <div className="h-5 md:h-6 w-px bg-brand-text/10 dark:bg-brand-border mx-1" />
+        <div className="h-5 md:h-6 w-px bg-brand-text/10 dark:bg-brand-border mx-0.5 md:mx-1" />
 
         {/* Menu Navigasi */}
         {menuItems.map((item) => {
@@ -122,7 +122,7 @@ export default function Navbar({ locale }: NavbarProps) {
               key={item.id} 
               href={item.path} 
               onClick={() => handleNavLinkClick(item.id)} 
-              className={`relative px-3 md:px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-colors ${isActive ? "text-white dark:text-slate-900" : "text-brand-text"}`}
+              className={`relative px-2 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-bold flex items-center gap-1.5 md:gap-2 transition-colors ${isActive ? "text-white dark:text-slate-900" : "text-brand-text"}`}
               title={item.name}
             >
               {isActive && (
@@ -132,7 +132,7 @@ export default function Navbar({ locale }: NavbarProps) {
                   transition={{ type: "spring", stiffness: 380, damping: 30 }} 
                 />
               )}
-              <Icon className="w-4 h-4 md:w-4 md:h-4" />
+              <Icon className="w-3.5 h-3.5 md:w-4 md:h-4" />
               
               <span className={`hidden lg:block ${isActive ? "" : "hover:text-brand-purple transition-colors"}`}>
                 {item.name}
@@ -141,27 +141,27 @@ export default function Navbar({ locale }: NavbarProps) {
           );
         })}
 
-        <div className="h-5 md:h-6 w-px bg-brand-text/10 dark:bg-brand-border mx-1" />
+        <div className="h-5 md:h-6 w-px bg-brand-text/10 dark:bg-brand-border mx-0.5 md:mx-1" />
 
         {/* Language Switcher */}
         <button 
           onClick={handleLanguageToggle}
-          className="flex items-center gap-1.5 px-2 md:px-3 py-1.5 border border-brand-text/10 dark:border-brand-border rounded-full text-xs font-black bg-brand-text/5 dark:bg-white/5 hover:bg-brand-text/10 dark:hover:bg-white/10 text-brand-text transition-all active:scale-95 cursor-pointer"
+          className="flex items-center gap-1 px-1.5 md:px-3 py-1 md:py-1.5 border border-brand-text/10 dark:border-brand-border rounded-full text-[10px] md:text-xs font-black bg-brand-text/5 dark:bg-white/5 hover:bg-brand-text/10 dark:hover:bg-white/10 text-brand-text transition-all active:scale-95 cursor-pointer"
         >
-          <Globe className="w-3.5 h-3.5 text-brand-text/70" />
+          <Globe className="w-3 h-3 md:w-3.5 md:h-3.5 text-brand-text/70" />
           <span>{locale.toUpperCase()}</span>
         </button>
 
         {/* Theme Switcher */}
         <button 
           onClick={toggleTheme}
-          className="flex items-center justify-center w-8 h-8 rounded-full border border-brand-text/10 dark:border-brand-border bg-brand-text/5 dark:bg-white/5 hover:bg-brand-text/10 dark:hover:bg-white/10 text-brand-text transition-all active:scale-95 cursor-pointer"
+          className="flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-full border border-brand-text/10 dark:border-brand-border bg-brand-text/5 dark:bg-white/5 hover:bg-brand-text/10 dark:hover:bg-white/10 text-brand-text transition-all active:scale-95 cursor-pointer"
           title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
         >
           {theme === "dark" ? (
-            <Sun className="w-4 h-4 text-brand-text/70" />
+            <Sun className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-text/70" />
           ) : (
-            <Moon className="w-4 h-4 text-brand-text/70" />
+            <Moon className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-text/70" />
           )}
         </button>
       </nav>

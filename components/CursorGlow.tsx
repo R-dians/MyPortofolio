@@ -1,11 +1,31 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CursorGlow() {
   const glowRef = useRef<HTMLDivElement>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    // Deteksi jika perangkat menggunakan pointer kasar (layar sentuh / touch screen)
+    const touchMediaQuery = window.matchMedia("(pointer: coarse)");
+    setIsTouchDevice(touchMediaQuery.matches);
+
+    const handleMediaQueryChange = (e: MediaQueryListEvent) => {
+      setIsTouchDevice(e.matches);
+    };
+
+    if (touchMediaQuery.addEventListener) {
+      touchMediaQuery.addEventListener("change", handleMediaQueryChange);
+    } else {
+      touchMediaQuery.addListener(handleMediaQueryChange);
+    }
+
+    if (touchMediaQuery.matches) {
+      console.log("CursorGlow disabled on touch device.");
+      return;
+    }
+
     console.log("CursorGlow component mounted successfully.");
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -18,8 +38,15 @@ export default function CursorGlow() {
     window.addEventListener("mousemove", handleMouseMove);
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      if (touchMediaQuery.removeEventListener) {
+        touchMediaQuery.removeEventListener("change", handleMediaQueryChange);
+      } else {
+        touchMediaQuery.removeListener(handleMediaQueryChange);
+      }
     };
   }, []);
+
+  if (isTouchDevice) return null;
 
   return (
     <div

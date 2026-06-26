@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
+import Image from "next/image";
 
 interface AboutProps {
   dict: {
@@ -31,10 +32,12 @@ export default function About({ dict }: AboutProps) {
 
           {/* Frame Foto Utama */}
           <div className="relative aspect-[4/5] bg-white dark:bg-brand-card-bg rounded-[32px] shadow-xl border border-brand-text/5 dark:border-brand-border overflow-hidden z-10">
-            <img
+            <Image
               src="/images/about.jpg"
               alt="Profil"
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              fill
+              sizes="(max-width: 768px) 100vw, 384px"
+              className="object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
         </motion.div>

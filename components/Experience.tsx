@@ -24,7 +24,7 @@ interface ExperienceProps {
 export default function Experience({ dict }: ExperienceProps) {
   return (
     <section id="experience" className="scroll-mt-14 py-8 md:py-12 relative">
-      <div className="max-w-5xl mx-auto md:px-6 relative z-10">
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
         {/* Badge Judul */}
         <div className="text-center mb-16">
           <h3 className="text-4xl md:text-5xl font-black tracking-tight text-brand-text">

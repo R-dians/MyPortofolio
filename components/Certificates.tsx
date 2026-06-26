@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface CertificatesProps {
   dict: {
@@ -11,14 +12,14 @@ interface CertificatesProps {
 
 // Data sementara (Ganti link Unsplash ini dengan link foto sertifikat asli Anda nanti)
 const certificates = [
-  { id: 1, alt: "Belajar Dasar AI", img: "images/certificate/BelajarDasarAI.webp" },
-  { id: 2, alt: "Belajar Membuat Front-End Web untuk Pemula", img: "images/certificate/FE.webp" },
-  { id: 3, alt: "Belajar Dasar Pemrograman Web", img: "images/certificate/BelajarDasarPemrogramanWeb.webp" },
-  { id: 4, alt: "Belajar Back End pemula dengan Javascript", img: "images/certificate/BEpemuladenganJavascript.webp" },
-  { id: 5, alt: "Belajar Dasar Pemrograman Javascript", img: "images/certificate/BelajarDasarPemrogramanJavascript.webp" },
-  { id: 6, alt: "Belajar Dasar Cloud dan Generative AI di AWS", img: "images/certificate/BelajarDasarClouddanGenAIdiAWS.webp" },
-  { id: 7, alt: "Introduction to Financial Literacy", img: "images/certificate/IntroductiontoFinancialLiteracy.webp" },
-  { id: 8, alt: "Dicoding Developer Conference 2026", img: "images/certificate/DicodingDeveloperConference2026.webp" },
+  { id: 1, alt: "Belajar Dasar AI", img: "/images/certificate/BelajarDasarAI.webp" },
+  { id: 2, alt: "Belajar Membuat Front-End Web untuk Pemula", img: "/images/certificate/FE.webp" },
+  { id: 3, alt: "Belajar Dasar Pemrograman Web", img: "/images/certificate/BelajarDasarPemrogramanWeb.webp" },
+  { id: 4, alt: "Belajar Back End pemula dengan Javascript", img: "/images/certificate/BEpemuladenganJavascript.webp" },
+  { id: 5, alt: "Belajar Dasar Pemrograman Javascript", img: "/images/certificate/BelajarDasarPemrogramanJavascript.webp" },
+  { id: 6, alt: "Belajar Dasar Cloud dan Generative AI di AWS", img: "/images/certificate/BelajarDasarClouddanGenAIdiAWS.webp" },
+  { id: 7, alt: "Introduction to Financial Literacy", img: "/images/certificate/IntroductiontoFinancialLiteracy.webp" },
+  { id: 8, alt: "Dicoding Developer Conference 2026", img: "/images/certificate/DicodingDeveloperConference2026.webp" },
 ];
 
 export default function Certificates({ dict }: CertificatesProps) {
@@ -53,10 +54,12 @@ export default function Certificates({ dict }: CertificatesProps) {
               */}
               <div className="relative aspect-[4/3] rounded-[12px] overflow-hidden bg-brand-text/5 dark:bg-white/5 border border-brand-text/10 dark:border-brand-border cursor-pointer transition-all duration-500 ease-out hover:scale-105 hover:z-10 hover:shadow-2xl hover:shadow-brand-mint/20 group-hover:opacity-50 hover:!opacity-100 transform-gpu">
                 
-                <img 
+                <Image 
                   src={cert.img} 
                   alt={cert.alt} 
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" 
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 hover:scale-110" 
                 />
                 
                 {/* Overlay transparan halus yang hilang saat di hover */}

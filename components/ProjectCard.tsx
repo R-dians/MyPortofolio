@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 // Fungsi pemetaan Tag ke URL Logo Devicon
 const getTechIcon = (tag: string) => {
@@ -43,9 +44,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   const title = data.title || "Proyek Tanpa Judul";
   const description = data.description || "";
-  const image =
+  let imageSrc =
     data.image ||
     "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop";
+  if (imageSrc && !imageSrc.startsWith("http") && !imageSrc.startsWith("/")) {
+    imageSrc = "/" + imageSrc;
+  }
   const tags = data.tags || [];
 
   return (
@@ -58,10 +62,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     >
       <div className="bg-white dark:bg-brand-card-bg border border-brand-text/10 dark:border-brand-border rounded-4xl overflow-hidden group hover:shadow-xl hover:border-brand-amber/30 transition-all duration-300 hover:-translate-y-1.5 transform-gpu h-full flex flex-col">
         <div className="relative aspect-video w-full bg-brand-text/5 overflow-hidden border-b border-brand-text/5">
-          <img
-            src={image}
+          <Image
+            src={imageSrc}
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-brand-text/0 group-hover:bg-brand-amber/5 transition-colors duration-300 pointer-events-none" />
         </div>
