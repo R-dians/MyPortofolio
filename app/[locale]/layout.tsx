@@ -3,8 +3,8 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "@/app/globals.css";
 import Navbar from "@/components/Navbar";
 import Preloader from "@/components/Preloader";
-import CursorGlow from "@/components/CursorGlow";
 import { Locale } from "@/lib/dictionary";
+import { Boxes } from "@/components/ui/background-boxes";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -73,17 +73,26 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${plusJakartaSans.className} bg-brand-bg text-brand-text antialiased selection:bg-brand-pink selection:text-white `}
+        className={`${plusJakartaSans.className} relative bg-brand-bg text-brand-text antialiased selection:bg-brand-pink selection:text-white min-h-screen overflow-x-hidden`}
       >
         <Preloader />
-        <CursorGlow />
 
-        {/* 2. PERUBAHAN DISINI: Tambahkan 'as Locale' agar komponen Navbar tetap aman */}
-        <Navbar locale={locale as Locale} />
+        {/* Global interactive background boxes */}
+        <div className="fixed inset-0 w-full h-full z-0 opacity-20 dark:opacity-30 overflow-hidden pointer-events-auto">
+          <Boxes />
+        </div>
 
-        <main className="pt-14 min-h-screen px-6 md:px-12 max-w-6xl mx-auto w-full overflow-x-hidden">
-          {children}
-        </main>
+        {/* Fading overlay to blend the boxes into the page background */}
+        <div className="fixed inset-0 w-full h-full bg-brand-bg/60 z-0 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+
+        <div className="relative z-10 w-full pointer-events-none [&_header]:pointer-events-auto [&_section]:pointer-events-auto [&_a]:pointer-events-auto [&_button]:pointer-events-auto [&_input]:pointer-events-auto [&_textarea]:pointer-events-auto [&_select]:pointer-events-auto [&_[role=dialog]]:pointer-events-auto">
+          {/* 2. PERUBAHAN DISINI: Tambahkan 'as Locale' agar komponen Navbar tetap aman */}
+          <Navbar locale={locale as Locale} />
+
+          <main className="pt-14 min-h-screen px-6 md:px-12 max-w-6xl mx-auto w-full">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );
