@@ -47,7 +47,7 @@ export default function About({ dict }: AboutProps) {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex-1 space-y-6"
+          className="w-full md:flex-1 space-y-6"
         >
           {/* Sapaan dengan Aksen Solid Color (Tetap menggunakan Flexbox responsif) */}
           <h3 className="flex flex-col items-start gap-3 md:gap-4 text-3xl md:text-4xl font-black text-brand-text uppercase">
