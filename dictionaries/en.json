@@ -1,0 +1,80 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects"
+  },
+  "hero": {
+    "greeting": "Hello, I am",
+    "role": "Fullstack Developer",
+    "tagline": "Building functional, interactive, and user-centric web applications.",
+    "ctaProjects": "View Projects",
+    "ctaContact": "Contact Me"
+  },
+  "about": {
+    "sectionTitle": "ABOUT ME",
+    "greeting": "I AM",
+    "name": "ARDIAN SUBAKTI",
+    "role": "FULLSTACK DEVELOPER",
+    "bio": "As an Information Systems graduate and Software Engineer, I specialize in translating complex business needs into efficient web applications.\n\nFrom digitizing operational workflows to architecting frontend interfaces, I thrive on building scalable full-stack solutions from the ground up that deliver real-world impact.",
+    "downloadCv": "DOWNLOAD CV"
+  },
+  "skills": {
+    "title": "Tech",
+    "accent": "Skills"
+  },
+  "experience": {
+    "title": "Work",
+    "accent": "Experience",
+    "technologiesLabel": "Technologies Used",
+    "list": [
+      {
+        "company": "Sineas Muslim Indonesia",
+        "role": "Fullstack Developer",
+        "period": "Jan 2025 - Present",
+        "location": "Bandung, Indonesia",
+        "description": [
+          "Configured automatic pre-commit hooks using Husky and lint-staged to enforce code quality standards (ESLint & Prettier) before every git commit.",
+          "Set up a local Docker Compose-based development environment for PostgreSQL database to maintain infrastructure consistency across the team.",
+          "Implemented an isolated monorepo architecture to streamline development workflow and separate dependencies between Next.js frontend and NestJS backend.",
+          "Optimized local dependency installation and script execution workflows using Bun runtime to minimize build times."
+        ],
+        "technologies": [
+          "Next.js",
+          "React",
+          "Tailwind CSS",
+          "TypeScript",
+          "Docker",
+          "Figma"
+        ]
+      }
+    ]
+  },
+  "certificates": {
+    "title": "Certificates &",
+    "accent": "Awards"
+  },
+  "projects": {
+    "title": "Featured",
+    "accent": "Works",
+    "subtitle": "A collection of projects I've built, ranging from user interfaces to complex backend systems.",
+    "drawer": {
+      "close": "Close",
+      "techStack": "Technologies Used",
+      "viewLive": "View Live Project",
+      "sourceCode": "Source Code"
+    }
+  },
+  "contact": {
+    "title": "Get In",
+    "accent": "Touch",
+    "subtitle": "Have a project idea, a question, or just want to say hi? Feel free to drop a message. I'm always open to new collaborative opportunities.",
+    "name": "Full Name",
+    "namePlaceholder": "Enter your name",
+    "email": "Email Address",
+    "emailPlaceholder": "name@email.com",
+    "message": "Message",
+    "messagePlaceholder": "Tell me about your project or idea...",
+    "send": "Send Message"
+  }
+}

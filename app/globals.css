@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --color-brand-bg: #fdfdfd;
+  --color-brand-text: #1e293b;
+  --color-brand-card-bg: #ffffff;
+  --color-brand-border: rgba(30, 41, 59, 0.08);
+  --cursor-glow: radial-gradient(circle, rgba(139, 92, 246, 0.45) 0%, rgba(59, 130, 246, 0.25) 50%, transparent 80%);
+}
+
+.dark {
+  --color-brand-bg: #0b0f19;
+  --color-brand-text: #f1f5f9;
+  --color-brand-card-bg: #131c2e;
+  --color-brand-border: rgba(241, 245, 249, 0.08);
+  --cursor-glow: radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, rgba(236, 72, 153, 0.2) 50%, transparent 80%);
+}
+
+@theme {
+  --color-brand-bg: var(--color-brand-bg);
+  --color-brand-text: var(--color-brand-text);
+  --color-brand-card-bg: var(--color-brand-card-bg);
+  --color-brand-border: var(--color-brand-border);
+
+  --color-brand-blue: #3b82f6;
+  --color-brand-purple: #8b5cf6;
+  --color-brand-pink: #ec4899;
+  --color-brand-mint: #10b981;
+  --color-brand-amber: #f59e0b;
+}
+
+body {
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-text);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
