@@ -4,8 +4,26 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
-  const rows = new Array(150).fill(1);
-  const cols = new Array(100).fill(1);
+  const [gridSize, setGridSize] = React.useState({ rows: 35, cols: 25, isMobile: true });
+
+  React.useEffect(() => {
+    const updateSize = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setGridSize({ rows: 35, cols: 25, isMobile: true });
+      } else if (width < 1024) {
+        setGridSize({ rows: 60, cols: 40, isMobile: false });
+      } else {
+        setGridSize({ rows: 90, cols: 60, isMobile: false });
+      }
+    };
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
+  const rows = new Array(gridSize.rows).fill(1);
+  const cols = new Array(gridSize.cols).fill(1);
   
   // Using direct color values instead of CSS variables
   const colors = [
@@ -38,7 +56,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
       {rows.map((_, i) => (
         <motion.div
           key={`row` + i}
-          className="w-16 h-8 border-l border-slate-200/60 dark:border-slate-800/50 relative"
+          className="w-16 h-8 border-l border-slate-200/60 dark:border-slate-800/50 relative will-change-transform"
         >
           {cols.map((_, j) => (
             <motion.div
@@ -50,9 +68,9 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
                 transition: { duration: 2 },
               }}
               key={`col` + j}
-              className="w-16 h-8 border-r border-t border-slate-200/60 dark:border-slate-800/50 relative"
+              className="w-16 h-8 border-r border-t border-slate-200/60 dark:border-slate-800/50 relative will-change-[background-color]"
             >
-              {j % 2 === 0 && i % 2 === 0 ? (
+              {!gridSize.isMobile && j % 2 === 0 && i % 2 === 0 ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
