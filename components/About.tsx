@@ -50,17 +50,17 @@ export default function About({ dict }: AboutProps) {
           className="w-full md:flex-1 space-y-6"
         >
           {/* Sapaan dengan Aksen Solid Color (Tetap menggunakan Flexbox responsif) */}
-          <h3 className="flex flex-col items-start gap-3 md:gap-4 text-3xl md:text-4xl font-black text-brand-text uppercase">
+          <h3 className="flex flex-col items-start gap-3 md:gap-4 text-2xl sm:text-3xl md:text-4xl font-black text-brand-text uppercase">
             {/* Baris 1: Sapaan & Nama */}
             <div className="flex flex-wrap items-center gap-x-3 gap-y-3">
               <span>{dict.greeting}</span>
-              <span className="bg-brand-blue text-white px-3 py-1 rounded-xl whitespace-nowrap -rotate-1 shadow-sm">
+              <span className="bg-brand-blue text-white px-3 py-1 rounded-xl sm:whitespace-nowrap -rotate-1 shadow-sm text-left">
                 {dict.name}
               </span>
             </div>
 
             {/* Baris 2: Role */}
-            <span className="bg-brand-mint text-brand-text px-3 py-1 rounded-xl whitespace-nowrap rotate-1 shadow-sm">
+            <span className="bg-brand-mint text-brand-text px-3 py-1 rounded-xl sm:whitespace-nowrap rotate-1 shadow-sm text-left">
               {dict.role}
             </span>
           </h3>
