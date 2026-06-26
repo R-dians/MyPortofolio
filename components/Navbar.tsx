@@ -111,7 +111,7 @@ export default function Navbar({ locale }: NavbarProps) {
           className="font-black text-sm md:text-lg tracking-tighter px-1.5 md:px-2 text-brand-text hover:scale-105 transition-transform flex items-center gap-1"
         >
           <Terminal className="w-4 h-4 text-brand-pink" />
-          <span>ARDIAN</span>
+          <span>YAN</span>
           <span className="text-brand-pink -ml-1">.</span>
         </a>
 
