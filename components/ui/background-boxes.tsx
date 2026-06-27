@@ -7,19 +7,42 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
   const [gridSize, setGridSize] = React.useState({ rows: 35, cols: 25, isMobile: true });
 
   React.useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
     const updateSize = () => {
       const width = window.innerWidth;
-      if (width < 640) {
-        setGridSize({ rows: 35, cols: 25, isMobile: true });
-      } else if (width < 1024) {
-        setGridSize({ rows: 50, cols: 35, isMobile: false });
-      } else {
-        setGridSize({ rows: 80, cols: 50, isMobile: false });
-      }
+      setGridSize((prev) => {
+        let newSize;
+        if (width < 640) {
+          newSize = { rows: 35, cols: 25, isMobile: true };
+        } else if (width < 1024) {
+          newSize = { rows: 50, cols: 35, isMobile: false };
+        } else {
+          newSize = { rows: 80, cols: 50, isMobile: false };
+        }
+        
+        // Prevent re-rendering if the grid size didn't actually change
+        if (
+          prev.rows === newSize.rows &&
+          prev.cols === newSize.cols &&
+          prev.isMobile === newSize.isMobile
+        ) {
+          return prev;
+        }
+        return newSize;
+      });
     };
+    
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(updateSize, 150); // Debounce resize events
+    };
+
     updateSize();
-    window.addEventListener("resize", updateSize);
-    return () => window.removeEventListener("resize", updateSize);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   const rows = new Array(gridSize.rows).fill(1);

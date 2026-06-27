@@ -77,7 +77,8 @@ export default function Preloader() {
     };
   }, [isVisible]);
 
-  if (!isVisible) return null;
+  // Jangan return null saat first load agar animasi exit (slide up) tetap berjalan
+  if (!isFirstLoad && !isVisible) return null;
 
   return (
     <AnimatePresence>
