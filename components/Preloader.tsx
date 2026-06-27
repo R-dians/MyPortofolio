@@ -57,10 +57,10 @@ export default function Preloader() {
       return () => clearTimeout(timeout);
     }
 
-    // Ganti kata setiap 200 milidetik
+    // Ganti kata setiap 350 milidetik
     const interval = setInterval(() => {
       setIndex((prev) => prev + 1);
-    }, 200);
+    }, 350);
 
     return () => clearInterval(interval);
   }, [index, isVisible, isFirstLoad]);
@@ -83,10 +83,11 @@ export default function Preloader() {
     <AnimatePresence>
       {isVisible && (
         <motion.div
+          id="preloader-wrapper"
           initial={{ opacity: 1 }}
           exit={{ 
             y: "-100%", // Slide up ke atas layar seperti tirai
-            transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 }
+            transition: { duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.2 }
           }}
           className="fixed inset-0 bg-[#F3F0FF] dark:bg-brand-bg z-9999 flex items-center justify-center"
         >

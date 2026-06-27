@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "@/app/globals.css";
 import Navbar from "@/components/Navbar";
-import ClientPreloader from "@/components/ClientPreloader";
+import Preloader from "@/components/Preloader";
 import { Locale } from "@/lib/dictionary";
 import { Boxes } from "@/components/ui/background-boxes";
 
@@ -67,6 +67,13 @@ export default async function RootLayout({
                 } else {
                   document.documentElement.classList.remove('dark');
                 }
+                
+                try {
+                  const preloaderVisited = sessionStorage.getItem('preloader_visited');
+                  if (preloaderVisited) {
+                    document.documentElement.classList.add('preloader-visited');
+                  }
+                } catch (e) {}
               })();
             `,
           }}
@@ -75,7 +82,7 @@ export default async function RootLayout({
       <body
         className={`${outfit.className} relative bg-brand-bg text-brand-text antialiased selection:bg-brand-pink selection:text-white min-h-screen overflow-x-hidden`}
       >
-        <ClientPreloader />
+        <Preloader />
 
         {/* Global interactive background boxes */}
         <div className="fixed inset-0 w-full h-full z-0 opacity-20 dark:opacity-30 overflow-hidden pointer-events-auto no-transition">

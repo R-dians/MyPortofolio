@@ -54,3 +54,8 @@ body {
 .framer-motion-element {
   transition: none !important;
 }
+
+/* Hide preloader immediately on subsequent visits in the same session */
+.preloader-visited #preloader-wrapper {
+  display: none !important;
+}
