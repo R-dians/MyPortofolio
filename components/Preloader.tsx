@@ -29,12 +29,30 @@ const colors = [
 export default function Preloader() {
   const [index, setIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const [isFirstLoad, setIsFirstLoad] = useState(false);
 
   useEffect(() => {
+    // Gunakan sessionStorage agar preloader hanya muncul sekali per session
+    const hasVisited = sessionStorage.getItem("preloader_visited");
+    if (hasVisited) {
+      setIsVisible(false);
+    } else {
+      setIsFirstLoad(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isFirstLoad || !isVisible) return;
+
     // Jika sudah sampai kata terakhir, hentikan loop dan tutup loading
     if (index === words.length - 1) {
       const timeout = setTimeout(() => {
         setIsVisible(false);
+        try {
+          sessionStorage.setItem("preloader_visited", "true");
+        } catch (e) {
+          // Ignored
+        }
       }, 500); // Tahan kata terakhir selama 500ms
       return () => clearTimeout(timeout);
     }
@@ -45,7 +63,7 @@ export default function Preloader() {
     }, 200);
 
     return () => clearInterval(interval);
-  }, [index]);
+  }, [index, isVisible, isFirstLoad]);
 
   useEffect(() => {
     // Kunci scrollbar browser selama loading aktif agar user tidak bisa scroll
@@ -58,6 +76,8 @@ export default function Preloader() {
       document.body.style.overflow = "unset";
     };
   }, [isVisible]);
+
+  if (!isVisible) return null;
 
   return (
     <AnimatePresence>

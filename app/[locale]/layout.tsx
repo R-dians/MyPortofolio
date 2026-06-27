@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "@/app/globals.css";
 import Navbar from "@/components/Navbar";
-import Preloader from "@/components/Preloader";
+import ClientPreloader from "@/components/ClientPreloader";
 import { Locale } from "@/lib/dictionary";
 import { Boxes } from "@/components/ui/background-boxes";
 
@@ -75,7 +75,7 @@ export default async function RootLayout({
       <body
         className={`${outfit.className} relative bg-brand-bg text-brand-text antialiased selection:bg-brand-pink selection:text-white min-h-screen overflow-x-hidden`}
       >
-        <Preloader />
+        <ClientPreloader />
 
         {/* Global interactive background boxes */}
         <div className="fixed inset-0 w-full h-full z-0 opacity-20 dark:opacity-30 overflow-hidden pointer-events-auto no-transition">
